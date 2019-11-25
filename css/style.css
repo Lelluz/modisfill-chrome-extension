@@ -10,6 +10,14 @@
   src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 } */
 
+::selection {
+  background: transparent;
+}
+
+* {
+  pointer-events: none;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #fff;
@@ -66,6 +74,7 @@ a {
 }
 
 .button {
+  pointer-events: all;
   cursor: pointer;
   padding: 11px 14.5px;
   color: #3f423e;
