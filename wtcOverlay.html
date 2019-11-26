@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    ul {
+      list-style-type: none;
+    }
+
+    .wtcOverlay {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+
+    .wtcOverlay>* {
+      width: 50%;
+    }
+
+    .hoursColumn,
+    .daysColumn {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+
+    .hoursColumn ul li,
+    .daysColumn ul li {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 150px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wtcOverlay">
+    <div class="hoursColumn">
+      <ul>
+        <li>
+          <label for="">Entry 1</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Exit 1</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Entry 2</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Exit 2</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Entry 3</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Exit 3</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Entry 4</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+        <li>
+          <label for="">Exit 4</label>
+          <input type="time" name="" id="" value="8:00" required>
+        </li>
+      </ul>
+    </div>
+    <div class="daysColumn">
+      <ul>
+        <li>
+          <label for="">Monday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+        <li>
+          <label for="">Tuesday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+        <li>
+          <label for="">Wednesday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+        <li>
+          <label for="">Thursday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+        <li>
+          <label for="">Friday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+        <li>
+          <label for="">Saturday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+        <li>
+          <label for="">Sunday</label>
+          <input type="checkbox" name="" id="">
+        </li>
+      </ul>
+    </div>
+    <div class="buttonsRow">
+      <button>Compile all</button>
+      <button>Compile current day</button>
+    </div>
+  </div>
+
+</body>
+
+</html>
