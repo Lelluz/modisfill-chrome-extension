@@ -1,26 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    //const bg = chrome.extension.getBackgroundPage()
-
     document.querySelector('.button.scan').addEventListener('click', () => {
-        chrome.tabs.query({currentWindow: true, active: true},
-        tabs => {
-            chrome.tabs.sendMessage(tabs[0].id, 'scan button click', manageOverlays)
-        })
+        chrome.tabs.query({ currentWindow: true, active: true },
+            tabs => {
+                chrome.tabs.sendMessage(tabs[0].id, 'scan button click', manageOverlays)
+            })
     }, false)
 
     const manageOverlays = result => {
 
-        if(result.valid) {
+        if (result) {
 
-            const welcomeOverlay = document.querySelector('.welcomeOverlay')
-            welcomeOverlay.parentElement.removeChild(welcomeOverlay);
+            const mainWrapper = document.querySelector('#main')
 
-            const template = document.createElement('div')
-            template.textContent = `${result.name} ${result.surname}`
-            document.body.appendChild(template)
+            const welcomeOverlay = mainWrapper.querySelector('.welcomeOverlay')
+            welcomeOverlay.parentElement.removeChild(welcomeOverlay)
+
+            const wtcTemplate = `
+            //custom template
+            `
+            mainWrapper.insertAdjacentHTML('beforeend', wtcTemplate)
 
         }
     }
-    
+
 }, false)
