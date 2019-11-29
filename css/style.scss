@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'ResoBold';
+  src: url('resobold_woff.woff');
+}
+
+/* @font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+} */
+
+::selection {
+  background: transparent;
+}
+
+* {
+  pointer-events: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
+input {
+  pointer-events: all;
+}
+
+.button {
+  pointer-events: all;
+  cursor: pointer;
+  padding: 11px 14.5px;
+  color: #3f423e;
+  font-size: 16px;
+  font-weight: bold;
+  background: #ffb81c;
+  border-radius: 4.8px;
+  font-family: ResoBold, sans-serif;
+
+  &.scan {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+}
+
+#main {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  background-color: #262626;
+
+  .background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    .logo {
+      width: 130px;
+      display: block;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .banner,
+    .network {
+      position: absolute;
+      transform: scaleY(-1);
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .welcomeOverlay {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 90px;
+
+    .instructionsMessage {
+      margin-top: 30px;
+    }
+  }
+
+  .wtcOverlay {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 90px;
+
+    .hoursColumn,
+    .daysColumn {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+
+      ul li {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 150px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .buttonsRow {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

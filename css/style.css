@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'ResoBold';
-  src: url('resobold_woff.woff');
+  src: url("resobold_woff.woff");
 }
 
 /* @font-face {
@@ -9,7 +9,9 @@
   font-weight: 400;
   src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 } */
-
+::-moz-selection {
+  background: transparent;
+}
 ::selection {
   background: transparent;
 }
@@ -28,49 +30,14 @@ a {
   text-decoration: none;
 }
 
-#main {
-  width: 400px;
-  height: 600px;
-  position: relative;
-  background-color: #262626;
+ul {
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  list-style-type: none;
 }
 
-.background {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.logo {
-  width: 130px;
-  display: block;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.banner, .network {
-  position: absolute;
-  transform: scaleY(-1);
-  width: 100%;
-  bottom: 0;
-  left: 0;
-}
-
-.welcomeOverlay {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  width: 100%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 80px;
-}
-
-.instructionsMessage {
-  margin-top: 30px;
+input {
+  pointer-events: all;
 }
 
 .button {
@@ -82,10 +49,123 @@ a {
   font-weight: bold;
   background: #ffb81c;
   border-radius: 4.8px;
-  font-family: ResoBold,sans-serif;
+  font-family: ResoBold, sans-serif;
 }
 
 .button.scan {
   margin-top: 15px;
   font-size: 18px;
 }
+
+#main {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  background-color: #262626;
+}
+
+#main .background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#main .background .logo {
+  width: 130px;
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#main .background .banner,
+#main .background .network {
+  position: absolute;
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+#main .welcomeOverlay {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-top: 90px;
+}
+
+#main .welcomeOverlay .instructionsMessage {
+  margin-top: 30px;
+}
+
+#main .wtcOverlay {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 90px;
+}
+
+#main .wtcOverlay .hoursColumn,
+#main .wtcOverlay .daysColumn {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+}
+
+#main .wtcOverlay .hoursColumn ul li,
+#main .wtcOverlay .daysColumn ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+#main .wtcOverlay .buttonsRow {
+  width: 100%;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
