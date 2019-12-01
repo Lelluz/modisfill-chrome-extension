@@ -11,8 +11,8 @@
     exitTwo = '18.00',
     exitThree = '',
     exitFour = '',
-    enabledEntries = [true, true, false, false],
-    enabledExit = [true, true, false, false],
+    /* enabledEntries = [true, true, false, false],
+    enabledExit = [true, true, false, false], */
     enabledDays = [true, true, true, true, true, false, false]
 
   const fieldsColumns = [

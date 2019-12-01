@@ -8,7 +8,8 @@
   },
   "permissions": [
     "https://candidate.it.modis.com/",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "browser_action": {
     "default_icon": "icon.png",
