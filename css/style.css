@@ -3,15 +3,10 @@
   src: url("resobold_woff.woff");
 }
 
-/* @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-} */
 ::-moz-selection {
   background: transparent;
 }
+
 ::selection {
   background: transparent;
 }
@@ -24,6 +19,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #fff;
   margin: 0;
+  font-size: 15px;
 }
 
 a {
@@ -36,8 +32,25 @@ ul {
   list-style-type: none;
 }
 
+label {
+  text-transform: uppercase;
+}
+
 input {
   pointer-events: all;
+}
+
+input[type="time"] {
+  border: solid 2px #FFB81C;
+  border-radius: 2px;
+  padding: 3px 0;
+  outline: none;
+  pointer-events: all;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
 }
 
 .button {
@@ -47,7 +60,7 @@ input {
   color: #3f423e;
   font-size: 16px;
   font-weight: bold;
-  background: #ffb81c;
+  background: #FFB81C;
   border-radius: 4.8px;
   font-family: ResoBold, sans-serif;
 }
@@ -117,6 +130,8 @@ input {
   position: absolute;
   z-index: 10;
   top: 0;
+  right: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,25 +139,34 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 90px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 90px auto 0;
+  width: 90%;
+}
+
+#main .wtcOverlay .hoursColumn {
+  border-right: solid 2px #FFB81C;
 }
 
 #main .wtcOverlay .hoursColumn,
 #main .wtcOverlay .daysColumn {
-  width: 50%;
+  width: 48%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#main .wtcOverlay .hoursColumn ul,
+#main .wtcOverlay .daysColumn ul {
+  width: 98%;
 }
 
 #main .wtcOverlay .hoursColumn ul li,
@@ -160,12 +184,23 @@ input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 150px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+#main .wtcOverlay .hoursColumn ul li label,
+#main .wtcOverlay .daysColumn ul li label {
+  min-width: 60px;
 }
 
 #main .wtcOverlay .buttonsRow {
   width: 100%;
-  text-align: center;
+  padding-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: solid 2px #FFB81C;
 }
 /*# sourceMappingURL=style.css.map */
