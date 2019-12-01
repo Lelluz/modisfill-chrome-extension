@@ -38,9 +38,10 @@ input {
   &[type="time"] {
     border: solid 2px #FFB81C;
     border-radius: 2px;
-    padding: 3px 0;
+    font-size: 15px;
     outline: none;
     pointer-events: all;
+    font-weight: bold;
   }
 
   &[type="checkbox"] {
@@ -53,22 +54,26 @@ input {
 .button {
   pointer-events: all;
   cursor: pointer;
-  padding: 11px 14.5px;
+  padding: 8px 12px;
   color: #3f423e;
-  font-size: 16px;
   font-weight: bold;
+  text-transform: uppercase;
   background: #FFB81C;
-  border-radius: 4.8px;
-  font-family: ResoBold, sans-serif;
+  border-radius: 2px;
+  transition: 0.25s;
 
-  &.scan {
+  &:hover {
+    transition: 0.25s;
+    background-color: #e89f00;
+  }
+
+  &[name=scan] {
     margin-top: 15px;
-    font-size: 18px;
   }
 }
 
 #main {
-  width: 400px;
+  width: 450px;
   height: 600px;
   position: relative;
   background-color: #262626;
