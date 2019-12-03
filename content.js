@@ -5,7 +5,14 @@ const filler = (fldCol, daysCol) => {
 
         fields.forEach(field => {
             const day = field.id.replace('text_', '')[0]
-            if (daysCol[day - 1].enabled) field.value = fldCol.value
+
+            //works only for last filled tr when take a click
+            field.blur()
+            field.focus()
+
+            if (daysCol[day - 1].enabled) {
+                field.value = fldCol.value.replace(/:/, '.')
+            }
         })
     }
 }

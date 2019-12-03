@@ -35,5 +35,5 @@ if (window.Notification && !isLastMonthDay(today)) {
       interval = 0
     }
 
-  }, 150000)
+  }, 10000000)
 }
