@@ -9,7 +9,8 @@
   "permissions": [
     "https://candidate.it.modis.com/",
     "activeTab",
-    "storage"
+    "storage",
+    "notifications"
   ],
   "browser_action": {
     "default_icon": "icon.png",
