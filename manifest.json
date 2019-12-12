@@ -7,7 +7,7 @@
     "128": "icon.png"
   },
   "permissions": [
-    "https://candidate.it.modis.com/",
+    "<all_urls>",
     "activeTab",
     "storage",
     "notifications"
@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://candidate.it.modis.com/*"
+        "<all_urls>"
       ],
       "js": [
         "content.js"

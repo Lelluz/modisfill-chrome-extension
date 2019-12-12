@@ -38,20 +38,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         }
         sendResponse(response)
 
-    }else if (request.message === 'fillAll button click' && request.data !== undefined) {
-    
+    } else if (request.message === 'fillAll button click' && request.data !== undefined) {
+
         const wrappedTemplate = JSON.parse(request.data)
         const fieldsColumns = wrappedTemplate[0]
         const daysColumn = wrappedTemplate[1]
-    
+
         fieldsColumns.forEach(cols => {
             filler(cols, daysColumn)
         })
 
-    }else if (request.message === 'clean button click' && request.data !== undefined) {
+    } else if (request.message === 'clean button click' && request.data !== undefined) {
 
         const fieldsColumns = JSON.parse(request.data)
-    
+
         fieldsColumns.forEach(cols => {
             cleaner(cols)
         })

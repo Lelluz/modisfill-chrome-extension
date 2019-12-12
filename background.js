@@ -17,7 +17,7 @@ if (!localStorage.isInitialized) {
 
 const today = new Date();
 
-if (window.Notification && !isLastMonthDay(today)) {
+if (window.Notification && isLastMonthDay(today)) {
 
   if (JSON.parse(localStorage.isActivated)) show()
 
