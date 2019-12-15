@@ -18,7 +18,6 @@ class fieldsColumns {
         labelName: entries.labelName
       }
     )
-
     this.fieldsColumns = fieldsColumns
   }
 
@@ -42,6 +41,21 @@ class fieldsColumns {
         }
       })
 
+    })
+
+  }
+
+  saveUserData() {
+
+    this.fieldsColumns.forEach(field => {
+
+      field.enabled = document.querySelector('#' + field.keyEnabledName).checked
+      chrome.storage.local.set({ [field.keyEnabledName]: field.enabled })
+
+      if (field.enabled) {
+        field.value = document.querySelector('#' + field.keyValueName).value
+        chrome.storage.local.set({ [field.keyValueName]: field.value })
+      }
     })
 
   }

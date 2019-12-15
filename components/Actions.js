@@ -38,7 +38,9 @@ class Actions {
             message: 'fillAll button click',
             data: jsonTemplate
           })
-        })
+        }
+      )
+
     }, false)
   }
 
@@ -63,6 +65,7 @@ class Actions {
           })
         })
     }, false)
+    
   }
 
 }

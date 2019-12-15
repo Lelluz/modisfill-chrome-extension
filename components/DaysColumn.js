@@ -34,6 +34,15 @@ class DaysColumn {
 
   }
 
+  saveUserData() {
+
+    this.daysColumn.forEach(day => {
+      day.enabled = document.querySelector('#' + day.keyEnabledName).checked
+      chrome.storage.local.set({ [day.keyEnabledName]: day.enabled })
+    })
+    
+  }
+
 }
 
 export default DaysColumn
