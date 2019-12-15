@@ -4,19 +4,8 @@ class DaysColumn {
     this.daysColumn = []
   }
 
-  createDay(entries) {
-
-    let daysColumn = [...this.daysColumn]
-
-    daysColumn.push(
-      {
-        keyEnabledName: entries.keyEnabledName,
-        enabled: entries.enabled,
-        labelName: entries.labelName
-      }
-    )
-
-    this.daysColumn = daysColumn
+  createDays(entries) {
+    this.daysColumn = [...entries]
   }
 
   loadUserData() {
@@ -45,4 +34,4 @@ class DaysColumn {
 
 }
 
-export default DaysColumn
+export default new DaysColumn()

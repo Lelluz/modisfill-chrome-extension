@@ -1,24 +1,11 @@
-class fieldsColumns {
+class FieldsColumns {
 
   constructor() {
     this.fieldsColumns = []
   }
 
-  createColumnField(entries) {
-
-    let fieldsColumns = [...this.fieldsColumn]
-
-    fieldsColumns = fieldsColumns.push(
-      {
-        keyValueName: entries.keyValueName,
-        keyEnabledName: entries.keyEnabledName,
-        value: entries.value,
-        enabled: entries.enabled,
-        selector: entries.selector,
-        labelName: entries.labelName
-      }
-    )
-    this.fieldsColumns = fieldsColumns
+  createColumnsFields(entries) {
+    this.fieldsColumns = [...entries]
   }
 
   loadUserData() {
@@ -28,6 +15,7 @@ class fieldsColumns {
       chrome.storage.local.get([field.keyValueName], result => {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
+
           field.value = result[field.keyValueName]
           document.querySelector('#' + field.keyValueName).value = field.value
         }
@@ -62,4 +50,4 @@ class fieldsColumns {
 
 }
 
-export default fieldsColumns
+export default new FieldsColumns()
