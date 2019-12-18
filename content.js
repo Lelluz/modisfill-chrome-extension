@@ -4,7 +4,9 @@ const filler = (fldCol, daysCol) => {
         const fields = document.querySelectorAll(fldCol.selector)
 
         fields.forEach(field => {
-            const day = field.id.replace('text_', '')[0]
+
+            const rawDay = field.id.replace('text_', ''),
+                day = rawDay[0] ? isNaN(parseInt(rawDay[1])) : `${rawDay[0]}${rawDay[1]}`
 
             //works only for last filled tr when take a click
             field.blur()
@@ -40,9 +42,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     } else if (request.message === 'fillAll button click' && request.data !== undefined) {
 
-        const wrappedTemplate = JSON.parse(request.data)
-        const fieldsColumns = wrappedTemplate[0]
-        const daysColumn = wrappedTemplate[1]
+        const wrappedTemplate = JSON.parse(request.data),
+            fieldsColumns = wrappedTemplate[0],
+            daysColumn = wrappedTemplate[1]
 
         fieldsColumns.forEach(cols => {
             filler(cols, daysColumn)
