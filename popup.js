@@ -7,7 +7,7 @@ WelcomeLayer.init()
 
 let welcomeLayerInDom = document.body.contains(WelcomeLayer.welcomeLayer)
 const welcomeLayerObserver = new MutationObserver(mutations => {
-    
+
     if (welcomeLayerInDom) {
 
         welcomeLayerInDom = false
@@ -78,53 +78,60 @@ const welcomeLayerObserver = new MutationObserver(mutations => {
                 labelName: 'Exit 4'
             }
         ])
-        
+
         DaysColumn.createDays(
             [
                 {
+                    id: 0,
                     keyEnabledName: 'modisfill_monday',
                     enabled: true,
                     labelName: 'Monday'
                 },
                 {
+                    id: 1,
                     keyEnabledName: 'modisfill_tuesday',
                     enabled: true,
                     labelName: 'Tuesday'
                 },
                 {
+                    id: 2,
                     keyEnabledName: 'modisfill_wednesday',
                     enabled: true,
                     labelName: 'Wednesday'
                 },
                 {
+                    id: 3,
                     keyEnabledName: 'modisfill_thursday',
                     enabled: true,
                     labelName: 'Thursday'
                 },
                 {
+                    id: 4,
                     keyEnabledName: 'modisfill_friday',
                     enabled: true,
                     labelName: 'Friday'
                 },
                 {
+                    id: 5,
                     keyEnabledName: 'modisfill_saturday',
                     enabled: false,
                     labelName: 'Saturday'
                 },
                 {
+                    id: 6,
                     keyEnabledName: 'modisfill_sunday',
                     enabled: false,
                     labelName: 'Sunday'
                 }
             ]
         )
-        
+
         FieldsColumns.loadUserData()
         DaysColumn.loadUserData()
-        
+
         TableLayer.init(FieldsColumns, DaysColumn)
 
     }
 });
-welcomeLayerObserver.observe(WelcomeLayer.mainLayer, {childList: true});
+welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true });
 
