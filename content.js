@@ -37,25 +37,17 @@ function sortDays(daysColumn, startDayIdx) {
     return sortedDays
 }
 
-function reduceDay(day) {
+function dayToIndex(day) {
 
-    let reducedDay = null
+    const dayStep = 7
 
-    if (day < 8) {
-        reducedDay = day - 1
-    } else if (day > 7 && day < 15) {
-        reducedDay = day - 8
-    } else if (day > 14 && day < 22) {
-        reducedDay = day - 15
-    } else if (day > 21 && day < 29) {
-        reducedDay = day - 22
-    } else if (day > 28 && day < 36) {
-        reducedDay = day - 29
-    } else if (day > 35 && day < 43) {
-        reducedDay = day - 36
+    if (day <= dayStep) {
+        return day - 1
     }
-
-    return reducedDay
+    if (day % dayStep === 0) {
+        return day - (dayStep * (parseInt(day / dayStep) - 1) + 1)
+    }
+    return day - (dayStep * parseInt(day / dayStep) + 1)
 }
 
 function clean(fldCol) {
@@ -66,7 +58,7 @@ function clean(fldCol) {
     })
 }
 
-function fillAll(fieldsColumns, daysColumn) {
+function autofill(fieldsColumns, daysColumn) {
     fieldsColumns.forEach(fldCol => {
         
         if (fldCol.enabled) {
@@ -76,13 +68,13 @@ function fillAll(fieldsColumns, daysColumn) {
 
                 const rawDay = field.id.replace('text_', ''),
                     day = isNaN(parseInt(rawDay[1])) ? rawDay[0] : `${rawDay[0]}${rawDay[1]}`,
-                    reducedDay = reduceDay(day)
+                    dayIdx = dayToIndex(day)
 
                 //works only for last filled tr when take a click
                 field.blur()
                 field.focus()
 
-                if (daysColumn[reducedDay].enabled) {
+                if (daysColumn[dayIdx].enabled) {
                     field.value = fldCol.value.replace(/:/, '.')
                 }
                 
@@ -114,11 +106,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             daysColumn = wrappedTemplate[1]
 
         if (wtcTemplate === 'week') {
-            fillAll(fieldsColumns, daysColumn)
+            autofill(fieldsColumns, daysColumn)
             
         }else if (wtcTemplate === 'month') {
             const sortedDaysColumn = sortDays(daysColumn, getFirstMonthDay())
-            fillAll(fieldsColumns, sortedDaysColumn)
+            autofill(fieldsColumns, sortedDaysColumn)
         }
 
     } else if (request.message === 'clean button click' && request.data !== undefined) {
