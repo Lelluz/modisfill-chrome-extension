@@ -1,5 +1,3 @@
-wtcTemplate = null
-
 function getFirstMonthDay() {
 
     const startDaySelector = document.querySelectorAll('#spanTimeTable > table > tbody > tr:not([style="display:none"])')[1],
@@ -58,7 +56,7 @@ function clean(fldCol) {
     })
 }
 
-function autofill(fieldsColumns, daysColumn) {
+function autoFill(fieldsColumns, daysColumn) {
     fieldsColumns.forEach(fldCol => {
         
         if (fldCol.enabled) {
@@ -90,36 +88,31 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request === 'scan button click') {
 
         const wtc = document.querySelector('[name="formManageTimeCard"]')
-        if (wtc !== null) {
-
-            wtcTemplate = getFirstMonthDay() === 0 ? 'week' : 'month'
-
-            response = true
-        }
+        if (wtc !== null) response = true
         
         sendResponse(response)
 
-    } else if (request.message === 'fillAll button click' && request.data !== undefined) {
-
+    }
+    if (request.message === 'autoFill button click' && request.data !== undefined) {
+        
         const wrappedTemplate = JSON.parse(request.data),
             fieldsColumns = wrappedTemplate[0],
-            daysColumn = wrappedTemplate[1]
+            daysColumn = wrappedTemplate[1],
+            firstMonthDay = getFirstMonthDay()
+            wtcTemplateType = firstMonthDay === 0 ? 'week' : 'month'
 
-        if (wtcTemplate === 'week') {
-            autofill(fieldsColumns, daysColumn)
-            
-        }else if (wtcTemplate === 'month') {
-            const sortedDaysColumn = sortDays(daysColumn, getFirstMonthDay())
-            autofill(fieldsColumns, sortedDaysColumn)
-        }
+        if (wtcTemplateType === 'week') autoFill(fieldsColumns, daysColumn)
+        if (wtcTemplateType === 'month') autoFill(fieldsColumns, sortDays(daysColumn, firstMonthDay))
 
-    } else if (request.message === 'clean button click' && request.data !== undefined) {
+    }
+    if (request.message === 'clean button click' && request.data !== undefined) {
 
         const fieldsColumns = JSON.parse(request.data)
 
         fieldsColumns.forEach(cols => {
             clean(cols)
         })
+        
     }
 
 })

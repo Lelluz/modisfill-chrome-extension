@@ -42,8 +42,8 @@ class TableLayer {
           </ul>
       </div>
       <div class="buttonsRow">
-          <a class="button" name="fillAll">Fill all</a>
-          <a class="button" name="fillCurday">Fill current day</a>
+          <a class="button" name="autoFill">Auto Fill</a>
+          <a class="button" name="manualFill">Manual Fill</a>
           <a class="button" name="clean">Clean</a>
       </div>
     </div>
@@ -53,7 +53,7 @@ class TableLayer {
 
   _setEvents() {
 
-    document.querySelector('.button[name=fillAll]').addEventListener('click', () => {
+    document.querySelector('.button[name=autoFill]').addEventListener('click', () => {
 
       this.fieldsColumns.saveUserData()
       this.daysColumn.saveUserData()
@@ -65,7 +65,7 @@ class TableLayer {
           const jsonTemplate = JSON.stringify(wrappedTemplate)
 
           chrome.tabs.sendMessage(tabs[0].id, {
-            message: 'fillAll button click',
+            message: 'autoFill button click',
             data: jsonTemplate
           })
         }
