@@ -16,6 +16,7 @@ function getFirstMonthDay() {
     return startDayIndex
 }
 
+
 function sortDays(daysColumn, startDayIdx) {
 
     let sortedDays = [...daysColumn]
@@ -35,6 +36,7 @@ function sortDays(daysColumn, startDayIdx) {
     return sortedDays
 }
 
+
 function dayToIndex(day) {
 
     const dayStep = 7
@@ -48,13 +50,14 @@ function dayToIndex(day) {
     return day - (dayStep * parseInt(day / dayStep) + 1)
 }
 
-function clean(fldCol) {
-    const fields = document.querySelectorAll(fldCol.selector)
 
-    fields.forEach(field => {
-        field.value = ''
+function clean(fldCols) {
+
+    fldCols.forEach(fldCol => {
+        document.querySelectorAll(fldCol.selector).forEach(field => field.value = '')
     })
 }
+
 
 function autoFill(fieldsColumns, daysColumn) {
     fieldsColumns.forEach(fldCol => {
@@ -80,6 +83,7 @@ function autoFill(fieldsColumns, daysColumn) {
         }
     })
 }
+
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
@@ -109,9 +113,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         const fieldsColumns = JSON.parse(request.data)
 
-        fieldsColumns.forEach(cols => {
-            clean(cols)
-        })
+        clean(fieldsColumns)
         
     }
 

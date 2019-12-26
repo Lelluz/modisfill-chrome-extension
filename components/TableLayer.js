@@ -2,7 +2,6 @@ class TableLayer {
 
   constructor() {
     this.mainLayer = document.querySelector('#main')
-
     this.fieldsColumns = null
     this.daysColumn = null
   }

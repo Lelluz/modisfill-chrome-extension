@@ -132,6 +132,6 @@ const welcomeLayerObserver = new MutationObserver(mutations => {
         TableLayer.init(FieldsColumns, DaysColumn)
 
     }
-});
-welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true });
+})
+welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true })
 
