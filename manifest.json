@@ -7,7 +7,8 @@
     "128": "icon.png"
   },
   "permissions": [
-    "<all_urls>",
+    "https://candidate.it.modis.com/*",
+    "https://candidate.adecco.it/*",
     "activeTab",
     "storage",
     "notifications"
@@ -22,7 +23,8 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "https://candidate.it.modis.com/*",
+        "https://candidate.adecco.it/*"
       ],
       "js": [
         "content.js"
