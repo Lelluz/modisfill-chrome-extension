@@ -6,6 +6,7 @@ import TableLayer from './components/TableLayer.js'
 WelcomeLayer.init()
 
 let welcomeLayerInDom = document.body.contains(WelcomeLayer.welcomeLayer)
+
 const welcomeLayerObserver = new MutationObserver(mutations => {
 
     if (welcomeLayerInDom) {
@@ -15,9 +16,7 @@ const welcomeLayerObserver = new MutationObserver(mutations => {
         FieldsColumns.createColumnsFields()
         DaysColumn.createDays()
 
-        setTimeout(() => {
-            TableLayer.init(FieldsColumns, DaysColumn)
-        }, 100)
+        setTimeout(() => TableLayer.init(FieldsColumns, DaysColumn), 100)
 
     }
 })

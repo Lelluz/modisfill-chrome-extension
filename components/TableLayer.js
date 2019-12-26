@@ -23,9 +23,11 @@ class TableLayer {
           <ul>
           ${this.fieldsColumns.fieldsColumns.map(field => `
           <li>
-              <label for="${field.keyValueName}">${field.labelName}</label>
-              <input type="time" name="${field.keyValueName}" id="${field.keyValueName}" value="${field.value}">
+            <label class="material-checkbox">
               <input type="checkbox" name="${field.keyEnabledName}" id="${field.keyEnabledName}" ${this._enabledToChecked(field.enabled)}>
+              <span>${field.labelName}</span>
+            </label>
+            <input type="time" name="${field.keyValueName}" id="${field.keyValueName}" value="${field.value}">
           </li>
           `.trim()).join('')}
           </ul>
@@ -34,8 +36,10 @@ class TableLayer {
           <ul>
           ${this.daysColumn.daysColumn.map(day => `
           <li>
-              <label for="${day.keyEnabledName}">${day.labelName}</label>
+            <label class="material-checkbox">
               <input type="checkbox" name="${day.keyEnabledName}" id="${day.keyEnabledName}" ${this._enabledToChecked(day.enabled)}>
+              <span>${day.labelName}</span>
+            </label>
           </li>
           `.trim()).join('')}
           </ul>

@@ -1,1 +1,128 @@
-/* No CSS *//*# sourceMappingURL=checkbox.css.map */
+.material-checkbox {
+  z-index: 0;
+  position: relative;
+  display: inline-block;
+  line-height: 1.6;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.material-checkbox > input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  z-index: -1;
+  position: absolute;
+  left: -10px;
+  top: -8px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  opacity: 0;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  pointer-events: none;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.2s;
+  transition: opacity 0.3s, -webkit-transform 0.2s;
+  transition: opacity 0.3s, transform 0.2s;
+  transition: opacity 0.3s, transform 0.2s, -webkit-transform 0.2s;
+}
+
+.material-checkbox > span {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.material-checkbox > span::before {
+  content: "";
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 3px 11px 3px 1px;
+  border: solid 2px;
+  border-color: #ffb81c;
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  vertical-align: top;
+  -webkit-transition: border-color 0.2s, background-color 0.2s;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.material-checkbox > span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  width: 9px;
+  height: 5px;
+  border: solid 2px transparent;
+  border-right: none;
+  border-top: none;
+  -webkit-transform: translate(3px, 4px) rotate(-45deg);
+          transform: translate(3px, 4px) rotate(-45deg);
+}
+
+.material-checkbox > input:checked,
+.material-checkbox > input:indeterminate {
+  background-color: #ffb81c;
+}
+
+.material-checkbox > input:checked + span::before,
+.material-checkbox > input:indeterminate + span::before {
+  border-color: #ffb81c;
+  background-color: #ffb81c;
+}
+
+.material-checkbox > input:checked + span::after,
+.material-checkbox > input:indeterminate + span::after {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
+.material-checkbox > input:indeterminate + span::after {
+  border-left: none;
+  -webkit-transform: translate(4px, 3px);
+          transform: translate(4px, 3px);
+}
+
+.material-checkbox > input:active {
+  opacity: 1;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: opacity 0s, -webkit-transform 0s;
+  transition: opacity 0s, -webkit-transform 0s;
+  transition: transform 0s, opacity 0s;
+  transition: transform 0s, opacity 0s, -webkit-transform 0s;
+}
+
+.material-checkbox > input:active + span::before {
+  border-color: #ffb81c;
+}
+
+.material-checkbox > input:disabled {
+  opacity: 0;
+}
+
+.material-checkbox > input:disabled + span {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: initial;
+}
+
+.material-checkbox > input:disabled + span::before {
+  border-color: currentColor;
+}
+
+.material-checkbox > input:checked:disabled + span::before,
+.material-checkbox > input:indeterminate:disabled + span::before {
+  border-color: transparent;
+  background-color: currentColor;
+}
+/*# sourceMappingURL=checkbox.css.map */

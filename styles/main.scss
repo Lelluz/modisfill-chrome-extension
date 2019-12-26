@@ -131,11 +131,10 @@ input {
 
     .hoursColumn {
       width: 55%;
-      border-right: solid 2px #FFB81C;
     }
 
     .daysColumn {
-      width: 40%;
+      width: 38%;
     }
 
     .hoursColumn,
@@ -152,10 +151,6 @@ input {
           justify-content: space-between;
           align-items: center;
           margin-bottom: 18px;
-          
-          label {
-            min-width: 60px;
-          }
         }
       }
 
@@ -163,7 +158,7 @@ input {
     
     .buttonsRow {
       width: 100%;
-      padding-top: 15px;
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       border-top: solid 2px #FFB81C;

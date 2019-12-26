@@ -155,11 +155,10 @@ input[type="checkbox"] {
 
 #main .wtcOverlay .hoursColumn {
   width: 55%;
-  border-right: solid 2px #FFB81C;
 }
 
 #main .wtcOverlay .daysColumn {
-  width: 40%;
+  width: 38%;
 }
 
 #main .wtcOverlay .hoursColumn,
@@ -198,14 +197,9 @@ input[type="checkbox"] {
   margin-bottom: 18px;
 }
 
-#main .wtcOverlay .hoursColumn ul li label,
-#main .wtcOverlay .daysColumn ul li label {
-  min-width: 60px;
-}
-
 #main .wtcOverlay .buttonsRow {
   width: 100%;
-  padding-top: 15px;
+  padding-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
