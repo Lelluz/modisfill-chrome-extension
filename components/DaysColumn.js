@@ -4,11 +4,20 @@ class DaysColumn {
     this.daysColumn = []
   }
 
-  createDays(entries) {
-    this.daysColumn = [...entries]
+  createDays() {
+
+    fetch(chrome.extension.getURL('../data.json'))
+    .then(response => response.json())
+    .then(jsonData => {
+
+      const daysColumn = JSON.parse(JSON.stringify(jsonData)).daysColumn
+      this.daysColumn = [...daysColumn]
+      
+    })
+    .then(() => this._loadUserData())
   }
 
-  loadUserData() {
+  _loadUserData() {
 
     this.daysColumn.forEach(day => {
 
@@ -16,7 +25,6 @@ class DaysColumn {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
           day.enabled = result[day.keyEnabledName]
-          document.querySelector('#' + day.keyEnabledName).checked = day.enabled
         }
       })
     })

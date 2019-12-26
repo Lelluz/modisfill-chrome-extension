@@ -4,20 +4,27 @@ class FieldsColumns {
     this.fieldsColumns = []
   }
 
-  createColumnsFields(entries) {
-    this.fieldsColumns = [...entries]
+  createColumnsFields() {
+
+    fetch(chrome.extension.getURL('../data.json'))
+    .then(response => response.json())
+    .then(jsonData => {
+
+      const fieldsColumns = JSON.parse(JSON.stringify(jsonData)).fieldsColumns
+      this.fieldsColumns = [...fieldsColumns]
+      
+    })
+    .then(() => this._loadUserData())
   }
 
-  loadUserData() {
+  _loadUserData() {
 
     this.fieldsColumns.forEach(field => {
 
       chrome.storage.local.get([field.keyValueName], result => {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
-
           field.value = result[field.keyValueName]
-          document.querySelector('#' + field.keyValueName).value = field.value
         }
       })
 
@@ -25,7 +32,6 @@ class FieldsColumns {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
           field.enabled = result[field.keyEnabledName]
-          document.querySelector('#' + field.keyEnabledName).checked = field.enabled
         }
       })
 
