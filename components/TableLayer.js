@@ -75,6 +75,24 @@ class TableLayer {
       )
     }, false)
 
+    document.querySelector('.button[name=manualFill]').addEventListener('click', () => {
+
+      this.fieldsColumns.saveUserData()
+      this.daysColumn.saveUserData()
+
+      chrome.tabs.query({ currentWindow: true, active: true },
+        tabs => {
+
+          const jsonTemplate = JSON.stringify(this.fieldsColumns.fieldsColumns)
+
+          chrome.tabs.sendMessage(tabs[0].id, {
+            message: 'manualFill button click',
+            data: jsonTemplate
+          })
+        }
+      )
+    }, false)
+
     document.querySelector('.button[name=clean]').addEventListener('click', () => {
 
       chrome.tabs.query({ currentWindow: true, active: true },
@@ -95,7 +113,7 @@ class TableLayer {
 
     this.fieldsColumns = FieldsColumns
     this.daysColumn = DaysColumn
-    
+
     this._generate()
     this._setEvents()
   }
