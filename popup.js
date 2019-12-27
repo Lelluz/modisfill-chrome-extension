@@ -2,6 +2,7 @@ import FieldsColumns from './components/FieldsColumns.js'
 import DaysColumn from './components/DaysColumn.js'
 import WelcomeLayer from './components/WelcomeLayer.js'
 import TableLayer from './components/TableLayer.js'
+import HoursDisableer from './components/HoursDisableer.js'
 
 WelcomeLayer.init()
 
@@ -17,6 +18,7 @@ const welcomeLayerObserver = new MutationObserver(mutations => {
         DaysColumn.createDays()
 
         setTimeout(() => TableLayer.init(FieldsColumns, DaysColumn), 100)
+        setTimeout(() => HoursDisableer.init(), 200)
 
     }
 })
