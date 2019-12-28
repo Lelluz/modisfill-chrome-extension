@@ -119,6 +119,18 @@ input {
     .instructionsMessage {
       margin-top: 30px;
     }
+    .link-list {
+      display: inline;
+      pointer-events: all;
+      margin: 20px 0;
+      a {
+        pointer-events: all;
+        margin: 20px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #FFB81C;
+      }
+    }
   }
 
   .wtcOverlay {

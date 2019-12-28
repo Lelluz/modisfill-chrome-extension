@@ -137,6 +137,20 @@ input[type="checkbox"] {
   margin-top: 30px;
 }
 
+#main .welcomeOverlay .link-list {
+  display: inline;
+  pointer-events: all;
+  margin: 20px 0;
+}
+
+#main .welcomeOverlay .link-list a {
+  pointer-events: all;
+  margin: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #FFB81C;
+}
+
 #main .wtcOverlay {
   position: absolute;
   z-index: 10;
