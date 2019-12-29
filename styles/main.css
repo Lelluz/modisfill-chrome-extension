@@ -110,7 +110,6 @@ hr {
   padding: 20px;
 }
 
-#main .background .banner,
 #main .background .network {
   position: absolute;
   -webkit-transform: scaleY(-1);
