@@ -18,7 +18,7 @@ class TableLayer {
 
     this._append(`
     <div class="wtcOverlay">
-      <p>Set your tipical working week and auto fill WTC table</p>
+      <p>Set your tipical working week and fill WTC table</p>
       <div class="hoursColumn">
           <ul>
           ${this.fieldsColumns.fieldsColumns.map(field => `
@@ -44,6 +44,7 @@ class TableLayer {
           `.trim()).join('')}
           </ul>
       </div>
+      <hr>
       <div class="buttonsRow">
           <a class="button" name="autoFill">Auto Fill</a>
           <a class="button" name="manualFill">Manual Fill</a>
