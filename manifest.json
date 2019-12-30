@@ -2,14 +2,14 @@
   "name": "Modisfill",
   "version": "1.0",
   "manifest_version": 2,
-  "description": "",
+  "description": "Estensione dedicata ai dipendenti Modis e Adecco che vogliono semplificare e automatizzare la compilazione del proprio WTC",
   "icons": {
     "128": "icon.png"
   },
   "permissions": [
-    "https://candidate.it.modis.com/*",
-    "https://candidate.modisitalia.it/*",
-    "https://candidate.adecco.it/*",
+    "*://candidate.it.modis.com/*",
+    "*://candidate.modisitalia.it/*",
+    "*://candidate.adecco.it/*",
     "storage",
     "notifications"
   ],
@@ -23,9 +23,9 @@
   "content_scripts": [
     {
       "matches": [
-        "https://candidate.it.modis.com/*",
-        "https://candidate.modisitalia.it/*",
-        "https://candidate.adecco.it/*"
+        "*://candidate.it.modis.com/*",
+        "*://candidate.modisitalia.it/*",
+        "*://candidate.adecco.it/*"
       ],
       "js": [
         "content.js"

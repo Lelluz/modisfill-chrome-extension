@@ -6,10 +6,6 @@ class TableLayer {
     this.daysColumn = null
   }
 
-  _enabledToChecked(enabled) {
-    if (enabled) return 'checked'
-  }
-
   _append(template) {
     this.mainLayer.insertAdjacentHTML('beforeend', template)
   }
@@ -18,13 +14,13 @@ class TableLayer {
 
     this._append(`
     <div class="wtcOverlay">
-      <p>Imposta la tua settimana di lavoro tipica</p>
+      <p>Imposta la tua tipica settimana di lavoro</p>
       <div class="hoursColumn">
           <ul>
           ${this.fieldsColumns.fieldsColumns.map(field => `
           <li>
             <label class="material-checkbox">
-              <input type="checkbox" name="${field.keyEnabledName}" id="${field.keyEnabledName}" ${this._enabledToChecked(field.enabled)}>
+              <input type="checkbox" name="${field.keyEnabledName}" id="${field.keyEnabledName}" ${field.enabled ? 'checked' : ''}>
               <span>${field.labelName}</span>
             </label>
             <input type="time" name="${field.keyValueName}" id="${field.keyValueName}" value="${field.value}">
@@ -37,7 +33,7 @@ class TableLayer {
           ${this.daysColumn.daysColumn.map(day => `
           <li>
             <label class="material-checkbox">
-              <input type="checkbox" name="${day.keyEnabledName}" id="${day.keyEnabledName}" ${this._enabledToChecked(day.enabled)}>
+              <input type="checkbox" name="${day.keyEnabledName}" id="${day.keyEnabledName}" ${day.enabled ? 'checked' : ''}>
               <span>${day.labelName}</span>
             </label>
           </li>
