@@ -4,17 +4,17 @@ class DaysColumn {
     this.daysColumn = []
   }
 
-  createDays() {
+  async createDays() {
 
-    fetch(chrome.extension.getURL('../data.json'))
-    .then(response => response.json())
-    .then(jsonData => {
+    await fetch(chrome.extension.getURL('../data.json'))
+      .then(response => response.json())
+      .then(jsonData => {
 
-      const daysColumn = JSON.parse(JSON.stringify(jsonData)).daysColumn
-      this.daysColumn = [...daysColumn]
-      
-    })
-    .then(() => this._loadUserData())
+        const daysColumn = JSON.parse(JSON.stringify(jsonData)).daysColumn
+        this.daysColumn = [...daysColumn]
+
+      })
+      .then(() => this._loadUserData())
   }
 
   _loadUserData() {
@@ -37,7 +37,7 @@ class DaysColumn {
       day.enabled = document.querySelector('#' + day.keyEnabledName).checked
       chrome.storage.local.set({ [day.keyEnabledName]: day.enabled })
     })
-    
+
   }
 
 }

@@ -8,19 +8,17 @@ WelcomeLayer.init()
 
 let welcomeLayerInDom = document.body.contains(WelcomeLayer.welcomeLayer)
 
-const welcomeLayerObserver = new MutationObserver(mutations => {
+const welcomeLayerObserver = new MutationObserver(async mutations => {
 
     if (welcomeLayerInDom) {
-
         welcomeLayerInDom = false
 
-        FieldsColumns.createColumnsFields()
-        DaysColumn.createDays()
+        await FieldsColumns.createColumnsFields()
+        await DaysColumn.createDays()
 
-        setTimeout(() => TableLayer.init(FieldsColumns, DaysColumn), 100)
-        setTimeout(() => HoursDisableer.init(), 200)
+        TableLayer.init(FieldsColumns, DaysColumn)
+        HoursDisableer.init()
 
     }
 })
 welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true })
-

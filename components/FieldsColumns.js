@@ -4,17 +4,18 @@ class FieldsColumns {
     this.fieldsColumns = []
   }
 
-  createColumnsFields() {
+  async createColumnsFields() {
 
-    fetch(chrome.extension.getURL('../data.json'))
-    .then(response => response.json())
-    .then(jsonData => {
+    await fetch(chrome.extension.getURL('../data.json'))
+      .then(response => response.json())
+      .then(jsonData => {
 
-      const fieldsColumns = JSON.parse(JSON.stringify(jsonData)).fieldsColumns
-      this.fieldsColumns = [...fieldsColumns]
-      
-    })
-    .then(() => this._loadUserData())
+        const fieldsColumns = JSON.parse(JSON.stringify(jsonData)).fieldsColumns
+        this.fieldsColumns = [...fieldsColumns]
+
+      })
+      .then(() => this._loadUserData())
+
   }
 
   _loadUserData() {
