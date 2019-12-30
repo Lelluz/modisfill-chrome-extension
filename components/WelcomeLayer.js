@@ -13,14 +13,14 @@ class WelcomeLayer {
 
     this._append(`
       <div class="welcomeOverlay">
-        <p class="instructionsMessage">Open your agency's WTC page and click the button below</p>
+        <p class="instructionsMessage">Apri la tabella oraria nella tua area personale Modis o Adecco e premi il bottone qui sotto</p>
         
         <div class="link-list">
-          <a href="https://candidate.it.modis.com/candidate/login.asp" name="modisLink">Modis login page</a>
-          <a href="https://candidate.adecco.it/candidate/login.asp" name="adeccoLink">Adecco login page</a>
+          <a href="https://candidate.it.modis.com/candidate/login.asp" name="modisLink">Modis Candidate</a>
+          <a href="https://candidate.adecco.it/candidate/login.asp" name="adeccoLink">Adecco Candidate</a>
         </div>
         
-        <a class="button" name="scan" href="#">Scan</a>
+        <a class="button" name="scan" href="#">Table scan</a>
       </div>
     `)
     this.welcomeLayer = this.mainLayer.querySelector('.welcomeOverlay')
@@ -33,11 +33,11 @@ class WelcomeLayer {
   _setEvents() {
 
     document.querySelector('[name=modisLink]').addEventListener('click', () => {
-      chrome.tabs.create({url:event.target.href})
+      chrome.tabs.create({ url: event.target.href })
     }, false)
 
     document.querySelector('[name=adeccoLink]').addEventListener('click', () => {
-      chrome.tabs.create({url:event.target.href})
+      chrome.tabs.create({ url: event.target.href })
     }, false)
 
     document.querySelector('[name=scan]').addEventListener('click', () => {
@@ -46,7 +46,7 @@ class WelcomeLayer {
           chrome.tabs.sendMessage(tabs[0].id, 'scan button click', result => {
             if (result) this._hide()
           })
-      })
+        })
     }, false)
 
   }

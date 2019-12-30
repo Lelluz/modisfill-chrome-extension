@@ -5,7 +5,7 @@ function isLastMonthDay(date) {
 function show() {
   new Notification('Modisfill reminder', {
     icon: 'icon.png',
-    body: 'Today is the last day of the month, have you already filled your WTC?'
+    body: 'Oggi è l\'ultimo giorno del mese, ricordati di compilare e validare il tuo WTC'
   });
 }
 
