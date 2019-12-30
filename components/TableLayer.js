@@ -46,8 +46,8 @@ class TableLayer {
       </div>
       <hr>
       <div class="buttonsRow">
-          <a class="button" name="autoFill">Fill automatico</a>
-          <a class="button" name="manualFill">Fill selettivo</a>
+          <a class="button" name="autoFill">Autofill</a>
+          <a class="button" name="manualFill">Selettivo</a>
           <a class="button" name="clean">Pulisci WTC</a>
       </div>
     </div>
