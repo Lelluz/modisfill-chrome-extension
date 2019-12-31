@@ -4,32 +4,26 @@ class FieldsColumns {
     this.fieldsColumns = []
   }
 
-  async createColumnsFields() {
+  createColumnsFields(fieldsColumns) {
 
-    await fetch(chrome.extension.getURL('../data.json'))
-      .then(response => response.json())
-      .then(jsonData => {
-
-        const fieldsColumns = JSON.parse(JSON.stringify(jsonData)).fieldsColumns
-        this.fieldsColumns = [...fieldsColumns]
-
-      })
-      .then(() => this._loadUserData())
-
+    this.fieldsColumns = [...fieldsColumns]
+    this._loadUserData()
   }
 
   _loadUserData() {
 
-    this.fieldsColumns.forEach(field => {
+    let fieldsColumns = [...this.fieldsColumns]
 
-      chrome.storage.local.get([field.keyValueName], result => {
+    fieldsColumns.forEach(field => {
+
+      chrome.storage.sync.get([field.keyValueName], result => {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
           field.value = result[field.keyValueName]
         }
       })
 
-      chrome.storage.local.get([field.keyEnabledName], result => {
+      chrome.storage.sync.get([field.keyEnabledName], result => {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
           field.enabled = result[field.keyEnabledName]
@@ -38,6 +32,7 @@ class FieldsColumns {
 
     })
 
+    this.fieldsColumns = fieldsColumns
   }
 
   saveUserData() {
@@ -45,11 +40,11 @@ class FieldsColumns {
     this.fieldsColumns.forEach(field => {
 
       field.enabled = document.querySelector('#' + field.keyEnabledName).checked
-      chrome.storage.local.set({ [field.keyEnabledName]: field.enabled })
+      chrome.storage.sync.set({ [field.keyEnabledName]: field.enabled })
 
       if (field.enabled) {
         field.value = document.querySelector('#' + field.keyValueName).value
-        chrome.storage.local.set({ [field.keyValueName]: field.value })
+        chrome.storage.sync.set({ [field.keyValueName]: field.value })
       }
     })
 

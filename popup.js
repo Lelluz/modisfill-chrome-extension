@@ -13,10 +13,14 @@ const welcomeLayerObserver = new MutationObserver(async mutations => {
     if (welcomeLayerInDom) {
         welcomeLayerInDom = false
 
-        await FieldsColumns.createColumnsFields()
-        await DaysColumn.createDays()
+        let response = await fetch(chrome.extension.getURL('data.json'))
+        const data = JSON.parse(JSON.stringify(await response.json()))
+
+        FieldsColumns.createColumnsFields(data.fieldsColumns)
+        DaysColumn.createDays(data.daysColumn)
 
         TableLayer.init(FieldsColumns, DaysColumn)
+
         HoursDisableer.init()
 
     }

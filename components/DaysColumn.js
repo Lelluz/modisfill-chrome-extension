@@ -4,24 +4,19 @@ class DaysColumn {
     this.daysColumn = []
   }
 
-  async createDays() {
+  createDays(daysColumn) {
 
-    await fetch(chrome.extension.getURL('../data.json'))
-      .then(response => response.json())
-      .then(jsonData => {
-
-        const daysColumn = JSON.parse(JSON.stringify(jsonData)).daysColumn
-        this.daysColumn = [...daysColumn]
-
-      })
-      .then(() => this._loadUserData())
+    this.daysColumn = [...daysColumn]
+    this._loadUserData()
   }
 
   _loadUserData() {
 
-    this.daysColumn.forEach(day => {
+    let daysColumn = [...this.daysColumn]
 
-      chrome.storage.local.get([day.keyEnabledName], result => {
+    daysColumn.forEach(day => {
+
+      chrome.storage.sync.get([day.keyEnabledName], result => {
 
         if (Object.getOwnPropertyNames(result).length !== 0) {
           day.enabled = result[day.keyEnabledName]
@@ -29,13 +24,14 @@ class DaysColumn {
       })
     })
 
+    this.daysColumn = daysColumn
   }
 
   saveUserData() {
 
     this.daysColumn.forEach(day => {
       day.enabled = document.querySelector('#' + day.keyEnabledName).checked
-      chrome.storage.local.set({ [day.keyEnabledName]: day.enabled })
+      chrome.storage.sync.set({ [day.keyEnabledName]: day.enabled })
     })
 
   }
