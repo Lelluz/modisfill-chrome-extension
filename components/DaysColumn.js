@@ -23,7 +23,7 @@ class DaysColumn {
         }
       })
     })
-
+    
     this.daysColumn = daysColumn
   }
 

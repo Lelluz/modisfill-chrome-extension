@@ -17,14 +17,12 @@ class FieldsColumns {
     fieldsColumns.forEach(field => {
 
       chrome.storage.sync.get([field.keyValueName], result => {
-
         if (Object.getOwnPropertyNames(result).length !== 0) {
           field.value = result[field.keyValueName]
-        }
+        } 
       })
 
       chrome.storage.sync.get([field.keyEnabledName], result => {
-
         if (Object.getOwnPropertyNames(result).length !== 0) {
           field.enabled = result[field.keyEnabledName]
         }

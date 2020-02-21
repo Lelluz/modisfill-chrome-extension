@@ -1,28 +1,36 @@
+import DataLoader from './components/DataLoader.js'
 import FieldsColumns from './components/FieldsColumns.js'
 import DaysColumn from './components/DaysColumn.js'
 import WelcomeLayer from './components/WelcomeLayer.js'
 import TableLayer from './components/TableLayer.js'
 import HoursDisableer from './components/HoursDisableer.js'
 
-WelcomeLayer.init()
+(async function() {
 
-let welcomeLayerInDom = document.body.contains(WelcomeLayer.welcomeLayer)
+    const json = chrome.extension.getURL('data.json'),
+        data = await DataLoader.loadData(json)
+        
+    return data
 
-const welcomeLayerObserver = new MutationObserver(async mutations => {
+})().then(data => {
 
-    if (welcomeLayerInDom) {
-        welcomeLayerInDom = false
+    WelcomeLayer.init()
 
-        let response = await fetch(chrome.extension.getURL('data.json'))
-        const data = JSON.parse(JSON.stringify(await response.json()))
+    let welcomeLayerInDom = document.body.contains(WelcomeLayer.welcomeLayer)
 
-        FieldsColumns.createColumnsFields(data.fieldsColumns)
-        DaysColumn.createDays(data.daysColumn)
+    const welcomeLayerObserver = new MutationObserver(mutations => {
 
-        TableLayer.init(FieldsColumns, DaysColumn)
+        if (welcomeLayerInDom) {
+            welcomeLayerInDom = false
 
-        HoursDisableer.init()
+            FieldsColumns.createColumnsFields(data.fieldsColumns)
+            DaysColumn.createDays(data.daysColumn)
 
-    }
+            setTimeout(() => TableLayer.init(FieldsColumns, DaysColumn), 200)
+
+            HoursDisableer.init()
+
+        }
+    })
+    welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true })
 })
-welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true })
