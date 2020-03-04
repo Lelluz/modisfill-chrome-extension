@@ -15,7 +15,7 @@ if (!localStorage.isInitialized) {
   localStorage.isInitialized = true
 }
 
-const today = new Date();
+const today = new Date()
 
 if (window.Notification && isLastMonthDay(today)) {
 
@@ -28,8 +28,8 @@ if (window.Notification && isLastMonthDay(today)) {
     interval++
 
     if (
-      JSON.parse(localStorage.isActivated) &&
-      localStorage.frequency <= interval
+      JSON.parse(localStorage.isActivated)
+      && localStorage.frequency <= interval
     ) {
       show()
       interval = 0
