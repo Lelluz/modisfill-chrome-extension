@@ -1,8 +1,7 @@
 {
   "name": "Modisfill",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 2,
-  "description": "Estensione dedicata ai dipendenti Modis e Adecco che vogliono semplificare e automatizzare la compilazione del proprio WTC",
   "icons": {
     "128": "icon.png"
   },
