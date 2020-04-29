@@ -5,14 +5,19 @@ import WelcomeLayer from './components/WelcomeLayer.js'
 import TableLayer from './components/TableLayer.js'
 import HoursDisableer from './components/HoursDisableer.js'
 
-(async function() {
+(async function () {
 
     const json = chrome.extension.getURL('data.json'),
         data = await DataLoader.loadData(json)
-        
+
     return data
 
 })().then(data => {
+
+    //Refactor the chrome.storage.sync, remove it from components and get the custom data from google sync after the default data.json
+    //After that move the two method calls below after the TableLayer initialization
+    FieldsColumns.createColumnsFields(data.fieldsColumns)
+    DaysColumn.createDays(data.daysColumn)
 
     WelcomeLayer.init()
 
@@ -22,14 +27,8 @@ import HoursDisableer from './components/HoursDisableer.js'
 
         if (welcomeLayerInDom) {
             welcomeLayerInDom = false
-
-            FieldsColumns.createColumnsFields(data.fieldsColumns)
-            DaysColumn.createDays(data.daysColumn)
-
-            setTimeout(() => TableLayer.init(FieldsColumns, DaysColumn), 200)
-
+            TableLayer.init(FieldsColumns, DaysColumn)
             HoursDisableer.init()
-
         }
     })
     welcomeLayerObserver.observe(WelcomeLayer.mainLayer, { childList: true })
