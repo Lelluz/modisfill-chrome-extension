@@ -67,9 +67,7 @@ if (window.Notification) {
   const today = new Date(),
     monthDays = getDaysInMonth(today.getMonth(), today.getFullYear())
 
-  if (isLastMonthDay(today) && !isLastWorkingDay(monthDays, today)) {
-    handleShowPopup()
-  } else if (isLastWorkingDayOfWeek(monthDays[monthDays.length - 1]) || isLastWorkingDayOfWeek(monthDays[monthDays.length - 2])) {
+  if (isLastMonthDay(today) || isLastWorkingDay(monthDays, today)) {
     handleShowPopup()
   }
 }
